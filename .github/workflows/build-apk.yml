@@ -1,51 +1,48 @@
-name: Build Android APK
+name: Build Ionic Android APK
 
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
   build:
+    name: Build APK
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up Node.js
+    - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '22.12.0' # Atau versi Node.js yang sesuai dengan proyek Anda
+        node-version: '18'
 
     - name: Install dependencies
-      run: npm install
+      run: npm ci
 
-    - name: Build Ionic/Angular app
+    - name: Build Ionic Web
       run: npm run build
 
-    - name: Set up JDK 17
+    - name: Copy Web to Android (Capacitor)
+      run: npx cap sync android
+
+    - name: Setup Java and Gradle
       uses: actions/setup-java@v3
       with:
         distribution: 'temurin'
         java-version: '17'
 
-    - name: Set up Android SDK
-      uses: android-actions/setup-android@v3
-
-    - name: Grant execute permission for gradlew
-      run: chmod +x android/gradlew
-
-    - name: Build Android APK
+    - name: Build APK
       run: |
         cd android
-        # Jika Anda menghasilkan keystore, uncomment baris di bawah dan sesuaikan
-        # echo "signingConfigs { release { storeFile file('my-release-key.keystore') storePassword 'your_store_password' keyAlias 'my-alias' keyPassword 'your_key_password' }}" >> app/build.gradle
-        ./gradlew assembleDebug # Atau assembleRelease untuk build release
+        ./gradlew assembleDebug
+
+    - name: Verifikasi Output APK
+      run: ls -l android/app/build/outputs/apk/debug
 
     - name: Upload APK
-      uses: actions/upload-artifact@v4.6.2
+      uses: actions/upload-artifact@v3
       with:
-        name: android-app-debug.apk
+        name: app-debug.apk
         path: android/app/build/outputs/apk/debug/app-debug.apk
