@@ -1,45 +1,91 @@
-name: Build Ionic Android APK
+name: Build Ionic Android APK    branches: [ main ]
+
+jobs:
+build:
+ name: Build APK
 
 on:
   push:
-    branches: [ main ] # Atau sesuaikan dengan nama branch kamu
+    branches: [ main ]
 
-jobs:
+
+ runs-on: ubuntu-latest
+
+ steps:
+ jobs:
   build:
     name: Build APK
-    runs-on: ubuntu-latest
+    runs - name: Checkout code
+   uses: actions/checkout-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+    - name:@v3
+
+ - name: Setup Node.js
+   uses: actions/setup Checkout code
+      uses: actions/checkout@v3-node@v3
+   with:
+     node-version: '18'
+
+
 
     - name: Setup Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup    - name: Install dependencies
+   run: npm ci-node@v3
       with:
-        node-version: '18'
+        node-version: '
+
+ - name18'
 
     - name: Install dependencies
-      run: npm ci
+      run: Build Ionic Web
+   run: npm run: npm ci
 
     - name: Build Ionic Web
-      run: npm run build
+      run build
 
-    - name: Copy Web to Android (Capacitor)
+ - name: Copy Web to Android (Capacitor)
+: npm run build
+
+    - name: Copy Web to Android (      run: npx cap sync android
+
+ - name: Setup JavaCapacitor)
       run: npx cap sync android
 
-    - name: Setup Java and Gradle
-      uses: actions/setup-java@v3
+    - and Gradle
+   uses: actions/setup-java@v3
+name: Setup Java and Gradle
+      uses: actions/setup      with:
+     distribution: 'temurin'
+    -java@v3
       with:
-        distribution: 'temurin'
+        distribution: java-version: '17'
+
+ - name: Build APK
+   run: 'temurin'
         java-version: '17'
 
-    - name: Build APK
+    - name |
+     cd android
+     ./gradlew assembleDebug
+
+: Build APK
       run: |
         cd android
-        ./gradlew assembleDebug
+ - name: Verify APK File
+   run: test -f android           ./gradlew assembleDebug
 
-    - name: Upload APK
+    - name: Verify APK Build Output
+     /app/build/outputs/apk/debug/app-debug.apk || { echo " run: ls -l android/app/build/outputs/apk/debug
+
+    - name: Upload APKAPK file not found!"; exit 1; }
+
+ - name: Upload APK
       uses: actions/upload-artifact@v3
       with:
+
+   uses: actions/upload-artifact@v3
+   with:
         name: app-debug.apk
-        path: android/app/build/outputs/apk/debug/app-debug.apk
+        path:        name: app-debug.apk
+     path: android/app android/app/build/outputs/apk/debug/app-debug.apk
