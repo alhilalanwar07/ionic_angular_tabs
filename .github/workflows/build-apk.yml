@@ -23,7 +23,7 @@ jobs:
       run: npm install
 
     - name: Build Ionic/Angular app
-      run: npm run build -- --prod
+      run: npm run build --configuration production
 
     - name: Set up JDK
       uses: actions/setup-java@v3
