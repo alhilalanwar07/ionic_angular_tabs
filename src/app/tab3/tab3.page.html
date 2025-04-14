@@ -1,17 +1,49 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Messages
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="search-outline"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="chat-content">
+  <div class="chat-list">
+    <ion-list lines="none">
+      <ion-item *ngFor="let contact of contacts" class="chat-item">
+        <div class="avatar-container">
+          <ion-avatar slot="start">
+            <img [src]="contact.avatar" [alt]="contact.name">
+          </ion-avatar>
+          <div class="status-dot" [style.background-color]="getStatusColor(contact.online)"></div>
+        </div>
+        
+        <ion-label class="chat-label">
+          <div class="chat-header">
+            <h2>{{ contact.name }}</h2>
+            <span class="chat-time">{{ contact.time }}</span>
+          </div>
+          <div class="chat-content">
+            <p>{{ contact.lastMessage }}</p>
+            <ion-badge *ngIf="contact.unread > 0" color="primary">
+              {{ contact.unread }}
+            </ion-badge>
+          </div>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

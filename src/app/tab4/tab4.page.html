@@ -1,0 +1,67 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Settings</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="search-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="settings-content">
+  <div class="user-profile">
+    <div class="profile-header">
+      <ion-avatar>
+        <img src="https://ionicframework.com/docs/img/demos/avatar.svg" alt="Profile">
+      </ion-avatar>
+      <div class="profile-info">
+        <h2>John Doe</h2>
+        <p>john.doe.example.com</p>
+      </div>
+      <ion-button fill="clear" class="edit-button">
+        <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+
+  <div class="settings-container">
+    <div *ngFor="let section of settingsSections" class="settings-section">
+      <h3 class="section-title">{{ section.title }}</h3>
+      
+      <ion-list class="settings-list">
+        <ion-item *ngFor="let item of section.items" class="settings-item" lines="none">
+          <div class="item-icon" [style.color]="item.color || 'var(--ion-color-settings-icon)'">
+            <ion-icon [name]="item.icon"></ion-icon>
+          </div>
+          
+          <ion-label>
+            <h4>{{ item.label }}</h4>
+            <p *ngIf="item.value">{{ item.value }}</p>
+          </ion-label>
+
+          <ion-badge *ngIf="item.badge" color="primary" class="setting-badge">
+            {{ item.badge }}
+          </ion-badge>
+          
+          <ion-toggle *ngIf="item.toggle !== undefined" 
+                     [(ngModel)]="item.toggle"
+                     class="setting-toggle">
+          </ion-toggle>
+          
+          <ion-icon *ngIf="!item.toggle && !item.badge" 
+                   name="chevron-forward-outline" 
+                   class="arrow-icon">
+          </ion-icon>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+
+  <div class="logout-button">
+    <ion-button expand="block" color="danger" fill="outline">
+      <ion-icon name="log-out-outline" slot="start"></ion-icon>
+      Logout
+    </ion-button>
+  </div>
+</ion-content>

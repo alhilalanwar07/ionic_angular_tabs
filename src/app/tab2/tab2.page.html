@@ -6,12 +6,97 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="profile-content">
+  <div class="cover-container">
+    <img [src]="user.coverPhoto" class="cover-photo" alt="Cover Photo">
+    <div class="profile-header">
+      <div class="avatar-container">
+        <img [src]="user.avatar" class="avatar" alt="Profile Picture">
+      </div>
+      <ion-buttons class="action-buttons">
+        <ion-button fill="clear" class="share-btn">
+          <ion-icon slot="icon-only" name="share-social-outline"></ion-icon>
+        </ion-button>
+        <ion-button fill="solid" class="follow-btn">
+          <ion-icon name="person-add-outline" slot="start"></ion-icon>
+          Follow
+        </ion-button>
+      </ion-buttons>
+    </div>
+  </div>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <div class="profile-info">
+    <h1 class="user-name">{{ user.name }}</h1>
+    <p class="username">{{ user.username }}</p>
+    <p class="bio">{{ user.bio }}</p>
+    
+    <div class="user-details">
+      <div class="detail-item">
+        <ion-icon name="location-outline"></ion-icon>
+        <span>{{ user.location }}</span>
+      </div>
+      <div class="detail-item">
+        <ion-icon name="globe-outline"></ion-icon>
+        <span>{{ user.website }}</span>
+      </div>
+      <div class="detail-item">
+        <ion-icon name="calendar-outline"></ion-icon>
+        <span>Joined {{ user.joined }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-container">
+    <div class="stat-card" *ngFor="let stat of stats">
+      <div class="stat-icon">
+        <ion-icon [name]="stat.icon"></ion-icon>
+      </div>
+      <div class="stat-info">
+        <h2>{{ formatNumber(stat.value) }}</h2>
+        <p>{{ stat.label }}</p>
+      </div>
+    </div>
+  </div>
+
+  <ion-segment [(ngModel)]="selectedSegment" (ionChange)="segmentChanged($event)" class="custom-segment">
+    <ion-segment-button *ngFor="let segment of segments" [value]="segment">
+      <ion-label>{{ segment }}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div class="segment-content">
+    <div *ngIf="selectedSegment === 'Posts'" class="activity-timeline">
+      <h3 class="section-title">Recent Activity</h3>
+      <div class="timeline-item" *ngFor="let activity of activities">
+        <div class="timeline-icon" [style.background-color]="activity.iconBg">
+          <ion-icon [name]="activity.icon"></ion-icon>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <h4>{{ activity.title }}</h4>
+            <span class="timeline-date">{{ activity.date }}</span>
+          </div>
+          <p>{{ activity.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="selectedSegment === 'Photos'" class="photos-grid">
+      <h3 class="section-title">Photo Gallery</h3>
+      <div class="photo-grid">
+        <div class="photo-item" *ngFor="let i of [1,2,3,4,5,6]">
+          <img src="https://ionicframework.com/docs/img/demos/thumbnail.svg" alt="Gallery photo">
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="selectedSegment === 'Saved'" class="saved-content">
+      <h3 class="section-title">Saved Items</h3>
+      <div class="empty-state">
+        <ion-icon name="bookmark"></ion-icon>
+        <h4>No saved items yet</h4>
+        <p>Items you save will appear here</p>
+      </div>
+    </div>
+  </div>
 </ion-content>

@@ -1,2 +1,60 @@
-// For information on how to create your own theme, please see:
+// Ionic Variables and Theming
 // http://ionicframework.com/docs/theming/
+
+:root {
+  // Custom color palette
+  --ion-color-primary: #5260ff;
+  --ion-color-primary-rgb: 82, 96, 255;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #4854e0;
+  --ion-color-primary-tint: #6370ff;
+
+  --ion-color-secondary: #3dc2ff;
+  --ion-color-secondary-rgb: 61, 194, 255;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #36abe0;
+  --ion-color-secondary-tint: #50c8ff;
+
+  --ion-color-accent: #ff4ecd;
+  --ion-color-accent-rgb: 255, 78, 205;
+  --ion-color-accent-contrast: #ffffff;
+  --ion-color-accent-contrast-rgb: 255, 255, 255;
+  --ion-color-accent-shade: #e045b4;
+  --ion-color-accent-tint: #ff60d2;
+  
+  // Custom font variables
+  --ion-font-family: 'Poppins', sans-serif;
+  
+  // Custom border radius
+  --ion-border-radius: 16px;
+  
+  // Custom shadows
+  --ion-box-shadow-small: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --ion-box-shadow-medium: 0 8px 20px rgba(0, 0, 0, 0.12);
+  --ion-box-shadow-large: 0 12px 28px rgba(0, 0, 0, 0.15);
+  
+  // Profile specific colors
+  --ion-color-profile-bg: #f8f9fe;
+  --ion-color-card-bg: rgba(255, 255, 255, 0.9);
+  --ion-color-stat-bg: rgba(82, 96, 255, 0.1);
+  
+  // Chat specific colors
+  --ion-color-chat-bg: #f5f7ff;
+  --ion-color-message-sent: #5260ff;
+  --ion-color-message-received: #ffffff;
+  --ion-color-chat-time: #a8aab7;
+  --ion-color-online: #4caf50;
+  --ion-color-offline: #bdbdbd;
+  
+  // Settings specific colors
+  --ion-color-settings-bg: #f8f9fe;
+  --ion-color-settings-card: rgba(255, 255, 255, 0.95);
+  --ion-color-settings-icon: #5260ff;
+  --ion-color-toggle-bg: rgba(82, 96, 255, 0.1);
+
+}
+
+// Add Poppins font
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');

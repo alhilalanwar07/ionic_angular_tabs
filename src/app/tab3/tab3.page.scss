@@ -1,0 +1,119 @@
+.chat-content {
+  --background: var(--ion-color-chat-bg);
+}
+
+ion-toolbar {
+  --background: transparent;
+  --border-width: 0;
+}
+
+.chat-list {
+  padding: 16px;
+}
+
+.chat-item {
+  --background: var(--ion-color-card-bg);
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-radius: 16px;
+  box-shadow: var(--ion-box-shadow-small);
+  transition: transform 0.2s ease;
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.avatar-container {
+  position: relative;
+  margin-right: 12px;
+
+  ion-avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .status-dot {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--ion-color-card-bg);
+  }
+}
+
+.chat-label {
+  overflow: visible;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+
+  h2 {
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .chat-time {
+    font-size: 12px;
+    color: var(--ion-color-chat-time);
+  }
+}
+
+.chat-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  p {
+    margin: 0;
+    color: var(--ion-color-medium);
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 85%;
+  }
+
+  ion-badge {
+    --padding-start: 8px;
+    --padding-end: 8px;
+    --padding-top: 4px;
+    --padding-bottom: 4px;
+    border-radius: 10px;
+  }
+}
+
+ion-fab-button {
+  --background: var(--ion-color-primary);
+  --background-activated: var(--ion-color-primary-shade);
+  --box-shadow: var(--ion-box-shadow-medium);
+}
+
+@media (min-width: 768px) {
+  .chat-list {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .chat-item {
+    --padding-start: 20px;
+    --padding-end: 20px;
+    --padding-top: 16px;
+    --padding-bottom: 16px;
+  }
+
+  .avatar-container ion-avatar {
+    width: 60px;
+    height: 60px;
+  }
+}

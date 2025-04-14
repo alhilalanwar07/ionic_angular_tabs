@@ -1,0 +1,402 @@
+.profile-content {
+  --background: var(--ion-color-profile-bg);
+}
+
+.cover-container {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.cover-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85);
+}
+
+.profile-header {
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+.avatar-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 4px solid white;
+  box-shadow: var(--ion-box-shadow-medium);
+  background: white;
+  overflow: hidden;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.action-buttons {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.share-btn {
+  --color: white;
+  --background: rgba(255, 255, 255, 0.2);
+  --border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  margin-right: 8px;
+}
+
+.follow-btn {
+  --background: var(--ion-color-primary);
+  --border-radius: 20px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  font-weight: 500;
+}
+
+.profile-info {
+  margin-top: 60px;
+  padding: 0 16px;
+}
+
+.user-name {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+}
+
+.username {
+  margin: 4px 0 12px;
+  color: #666;
+  font-size: 16px;
+}
+
+.bio {
+  margin: 0 0 16px;
+  line-height: 1.5;
+  color: #444;
+}
+
+.user-details {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+  margin-bottom: 8px;
+  color: #666;
+  
+  ion-icon {
+    margin-right: 6px;
+    font-size: 18px;
+    color: var(--ion-color-primary);
+  }
+}
+
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 0 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: var(--ion-color-card-bg);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  box-shadow: var(--ion-box-shadow-small);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.stat-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--ion-color-stat-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  
+  ion-icon {
+    font-size: 20px;
+    color: var(--ion-color-primary);
+  }
+}
+
+.stat-info {
+  h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  p {
+    margin: 4px 0 0;
+    font-size: 12px;
+    color: #666;
+  }
+}
+
+.custom-segment {
+  padding: 0 16px;
+  margin-bottom: 24px;
+  --background: transparent;
+  
+  ion-segment-button {
+    --background-checked: transparent;
+    --color: #666;
+    --color-checked: var(--ion-color-primary);
+    --indicator-color: var(--ion-color-primary);
+    min-width: 80px;
+    font-weight: 500;
+  }
+}
+
+.section-title {
+  margin: 0 0 16px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  padding: 0 16px;
+}
+
+.segment-content {
+  padding-bottom: 32px;
+}
+
+// Timeline styling
+.activity-timeline {
+  padding: 0 16px;
+}
+
+.timeline-item {
+  display: flex;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.timeline-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+  flex-shrink: 0;
+  
+  ion-icon {
+    color: white;
+    font-size: 20px;
+  }
+}
+
+.timeline-content {
+  background: var(--ion-color-card-bg);
+  border-radius: 16px;
+  padding: 16px;
+  flex-grow: 1;
+  box-shadow: var(--ion-box-shadow-small);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: 40px;
+    top: 20px;
+    transform: translateX(-50%);
+    border: 8px solid transparent;
+    border-right-color: var(--ion-color-card-bg);
+  }
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  
+  h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .timeline-date {
+    font-size: 12px;
+    color: #888;
+  }
+}
+
+// Photos grid
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 0 16px;
+}
+
+.photo-item {
+  aspect-ratio: 1/1;
+  border-radius: 12px;
+  overflow: hidden;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// Empty state
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+  text-align: center;
+  
+  ion-icon {
+    font-size: 64px;
+    color: #ccc;
+    margin-bottom: 16px;
+  }
+  
+  h4 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  p {
+    margin: 0;
+    color: #888;
+  }
+}
+
+@media (max-width: 360px) {
+  .stats-container {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .stat-card {
+    padding: 12px;
+  }
+  
+  .stat-icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .stat-info h2 {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 361px) and (max-width: 767px) {
+  .stats-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .stats-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .stat-card {
+    padding: 20px;
+  }
+  
+  .stat-icon {
+    width: 48px;
+    height: 48px;
+    
+    ion-icon {
+      font-size: 24px;
+    }
+  }
+  
+  .stat-info {
+    h2 {
+      font-size: 20px;
+    }
+    
+    p {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .stats-container {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1200px;
+  }
+  
+  .stat-card {
+    padding: 24px;
+  }
+}
+
+// Improve card animations and interactions
+.timeline-content {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--ion-box-shadow-medium);
+  }
+}
+
+.photo-item {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  
+  &:hover {
+    transform: scale(1.05);
+    
+    img {
+      filter: brightness(1.1);
+    }
+  }
+}

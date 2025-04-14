@@ -1,1 +1,88 @@
+.modern-tabs {
+  --background: #ffffff;
+  --border: none;
+  padding: 5px 10px 10px;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05);
+  border-radius: 20px 20px 0 0;
+  
+  &::before {
+    display: none;
+  }
+}
 
+.tab-button {
+  --color: #b4b4b4;
+  --color-selected: #3880ff;
+  --background: transparent;
+  --background-focused: transparent;
+  --ripple-color: transparent;
+  
+  &.tab-selected {
+    .tab-button-inner {
+      background: rgba(56, 128, 255, 0.1);
+      
+      ion-icon {
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+.tab-button-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  padding: 8px 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease;
+  
+  ion-icon {
+    font-size: 22px;
+    margin-bottom: 4px;
+    transition: transform 0.3s ease;
+  }
+  
+  ion-label {
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 2px;
+  }
+}
+
+/* Animasi untuk tab aktif */
+ion-tab-button.tab-selected {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    background: var(--color-selected);
+    border-radius: 50%;
+    opacity: 0;
+    animation: dot-appear 0.3s forwards;
+  }
+}
+
+@keyframes dot-appear {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 5px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* Efek hover */
+.tab-button:hover .tab-button-inner {
+  background: rgba(0, 0, 0, 0.03);
+}
